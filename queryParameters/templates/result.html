@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gargantuan Product Database</title>
+</head>
+<body class="container">
+
+    <h1 class="mb-2 text-center">Welcome to the Gargantuan Product Database</h1>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <h2 class="mb-2"> Search for a product:</h2>
+    <form action="{{ url_for('search', product_id=name)}}" method="get" >
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name">
+        </div>
+{#        <p></p>#}
+{#      <div class="form-group">#}
+{#        <label for="price">Price</label>#}
+{#        <input type="text" class="form-control" id="price" name="price">#}
+{#      </div>#}
+{#        <p></p>#}
+{#      <div class="form-group">#}
+{#        <label for="qty">Qty</label>#}
+{#        <input type="text" class="form-control" id="qty" name="qty">#}
+{#      </div>#}
+        <p></p>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <h1>Search result for {{ name }}</h1>
+
+    <p></p>
+
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Qty</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ name }}</td>
+                <td>{{ price }}</td>
+                <td>{{ qty }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

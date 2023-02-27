@@ -1,0 +1,89 @@
+-- COMBINING & CLEANING TABLE DATA
+-- 1. Create a new table that will have all the available columns from the separate smaller tables.
+--     CREATE TABLE car_employees (
+--     id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+--     name VARCHAR(200),
+--     birth_date VARCHAR(200),
+--     gender VARCHAR(200),
+--     annual_salary INT,
+--     nationality VARCHAR(200),
+--     university VARCHAR(200),
+--     branch VARCHAR(200),
+--     position VARCHAR(200)
+-- )
+-- 2. Add the missing columns in the separate smaller tables.
+--      ALTER TABLE employees2 ADD COLUMN column_name1 data_type, column_name2 data_type;
+-- 3. Copy the data from each smaller table to the new table
+--      INSERT INTO car_employees SELECT name, birth_date, gender, monthly_salary*12, nationality, university, branch, position
+--      FROM employees2;
+-- 4. EXTRAS
+--      Empty a table: TRANCATE TABLE car_employees;
+--      Change the date data_type: ALTER TABLE car_employees ALTER COLUMN birth_date DATE;
+--      Counts the number of rows: SELECT COUNT(0) FROM car_employees;
+
+
+-------------------------------------------------------------------------------------------------
+
+/* Get information about employees */
+USE cars
+
+-- 1. Which first name is the most common in the company?
+--      CREATE TABLE temp (
+--          id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+--          name VARCHAR(200)
+--      )
+-- 
+--      INSERT INTO temp SELECT SUBSTRING([name], 1, CHARINDEX(' ', [name])-1)
+--      FROM car_employees;
+-- 
+--      SELECT      name, COUNT(name) AS frequency
+--      FROM        temp
+--      GROUP BY    name
+--      ORDER BY    frequency DESC;
+
+
+-- 2. Which first name is the most common among the younger (<30) employees?
+--      DROP TABLE temp;
+--      CREATE TABLE temp (
+--          id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+--          name VARCHAR(200),
+--          birth_date DATE
+--      )
+-- 
+--      INSERT INTO temp SELECT SUBSTRING([name], 1, CHARINDEX(' ', [name])-1), birth_date
+--      FROM car_employees;
+-- 
+--      ALTER TABLE temp ADD age INT
+--      UPDATE temp SET age=DATEDIFF(year, birth_date, '2022/10/31');
+-- 
+--      SELECT      name, COUNT(name) AS frequency
+--      FROM        temp
+--      WHERE       age < 30
+--      GROUP BY    name
+--      ORDER BY    frequency DESC;
+
+-- 3. What is the median salary in the company?
+--      DROP TABLE temp;
+--      CREATE TABLE temp (
+--          id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+--          salary INT
+-- )
+-- 
+--      INSERT INTO temp SELECT annual_salary
+--      FROM car_employees;
+--      -- Here the total data is an even number, thats why I use only the two chosen date (i.e. from 10 -ordered- data I would use the 5th and 6th data). If the total data
+--      -- were to be odd, then I would have to order them and find the one in the middle - (count(0) + 1)/2 would give me the desirable result.
+--      SELECT
+--      (
+--          (SELECT MAX(salary) FROM
+--          (SELECT TOP 50 PERCENT salary FROM temp ORDER BY salary) AS BottomHalf)
+--          +
+--          (SELECT MIN(salary) FROM
+--          (SELECT TOP 50 PERCENT salary FROM temp ORDER BY salary DESC) AS TopHalf)
+--      ) / 2 AS Median
+
+-- 4. How many employee earns more than the average?
+--      - do not hard-code the average
+--      - use one query
+
+-- 5. Increase the salary by monthly $100 for everybody who earns less than the median

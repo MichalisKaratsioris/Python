@@ -1,0 +1,12 @@
+list_A = ["Apple", "Avocado", "Blueberries", "Durian", "Lychee"]
+list_B = list_A.copy()
+print("Durian" in list_A)
+list_B.remove("Durian")
+list_A.insert(4, "Kiwifruit")
+print(len(list_A) < len(list_B))
+print(list_A.index("Avocado"))
+# print(list_B.index("Durian"))
+list_B.extend(["Passion Fruit", "Pomelo"])
+print(list_A[2])
+print(list_A)
+print(list_B)

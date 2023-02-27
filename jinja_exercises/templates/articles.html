@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% for article in articles %}
+        <p>
+            {{ article.content[0:225] }}
+        </p>
+        {% if article.seen|length > 1 %}
+            <p>
+               Seen by  {{ article.seen[:-1]|join(', ') }} and {{ article.seen[-1] }}
+            </p>
+        {% elif article.seen|length == 1 %}
+            <p>
+               Seen by {{ article.seen|join }}
+            </p>
+        {% else %}
+            <p>
+                No one has seen this article before.
+            </p>
+        {% endif %}
+    {% endfor %}
+{% endblock content %}

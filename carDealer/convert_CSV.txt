@@ -1,0 +1,35 @@
+-- CSV
+
+-- USE database_name
+
+-- CREATE TABLE employees2 (
+
+--     id INT,
+
+--     first_name VARCHAR(200),
+
+--     last_name VARCHAR(200),
+
+--     birth_date VARCHAR(200),
+
+--     gender VARCHAR(200),
+
+--     monthly_salary INT
+
+-- )
+
+-- BULK INSERT employees2
+
+-- FROM 'C:\Users\mkara\PycharmProjects\carDealer\employees.csv'
+
+-- WITH (
+
+--     FORMAT = 'CSV',
+
+--     FIRSTROW = 2,
+
+--     FIELDTERMINATOR = ',',
+
+--     ROWTERMINATOR = '\n'
+
+-- )

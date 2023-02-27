@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Gargantuan Product Database</title>
+</head>
+<body class="container" >
+    <h1 class="mb-2 text-center">Welcome to the Gargantuan Product Database</h1>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <h2 class="mb-2"> Search for a product:</h2>
+    <form action="{{ url_for('search', product_id=name)}}" method="get" >
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name">
+        </div>
+{#        <p></p>#}
+{#      <div class="form-group">#}
+{#        <label for="price">Price</label>#}
+{#        <input type="text" class="form-control" id="price" name="price">#}
+{#      </div>#}
+{#        <p></p>#}
+{#      <div class="form-group">#}
+{#        <label for="qty">Qty</label>#}
+{#        <input type="text" class="form-control" id="qty" name="qty">#}
+{#      </div>#}
+        <p></p>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+</body>
+</html>
+{#{{ url_for('search') }}"#}

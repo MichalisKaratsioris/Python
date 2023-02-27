@@ -1,0 +1,51 @@
+-- JSON
+
+-- USE database_name
+
+-- -- 1. Import file using OPENROWSET
+
+-- SELECT *
+
+-- FROM OPENROWSET (BULK 'C:\Users\mkara\PycharmProjects\carDealer\employees.json', SINGLE_CLOB) AS IMPORT
+
+-- -- 2. Convert json output from the variable into MSSQL tables
+
+-- DECLARE @JSON VARCHAR(MAX)
+
+-- SELECT @JSON=BulkColumn
+
+-- FROM OPENROWSET (BULK 'C:\Users\mkara\PycharmProjects\carDealer\employees.json', SINGLE_CLOB) IMPORT
+
+-- SELECT *
+
+-- FROM OPENJSON (@JSON)
+
+-- -- 3. Import JSON file data into the MSSQL table
+
+-- DECLARE @JSON VARCHAR(MAX)
+
+-- SELECT @JSON=BulkColumn
+
+-- FROM OPENROWSET (BULK 'C:\Users\mkara\PycharmProjects\carDealer\employees.json', SINGLE_CLOB) IMPORT
+
+-- SELECT * INTO employees
+
+-- FROM OPENJSON (@JSON)
+
+-- WITH (
+
+--     [id] INT,
+
+--     [name] VARCHAR(200),
+
+--     [birth_date] VARCHAR(200),
+
+--     [nationality] VARCHAR(200),
+
+--     [gender] VARCHAR(200),
+
+--     [monthly_salary] INT,
+
+--     [university]  VARCHAR(200)
+
+-- )

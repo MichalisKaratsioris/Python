@@ -1,0 +1,27 @@
+-- XML
+-- USE database_name
+
+-- CREATE TABLE employees3 (
+--     id INT,
+--     name VARCHAR(200),
+--     birth_date VARCHAR(200),
+--     branch VARCHAR(200),
+--     gender VARCHAR(200),
+--     salary_by_year INT,
+--     position VARCHAR(200)
+-- )
+
+-- INSERT INTO employees3 (id, name, birth_date, branch, gender, salary_by_year, position)
+-- SELECT
+--     MY_XML.record.query('id').value('.', 'INT'),
+--     MY_XML.record.query('name').value('.', 'VARCHAR(200)'),
+--     MY_XML.record.query('birth_date').value('.', 'VARCHAR(200)'),
+--     MY_XML.record.query('branch').value('.', 'VARCHAR(200)'),
+--     MY_XML.record.query('gender').value('.', 'VARCHAR(200)'),
+--     MY_XML.record.query('salary_by_year').value('.', 'INT'),
+--     MY_XML.record.query('position').value('.', 'VARCHAR(200)')
+-- FROM (SELECT CAST(MY_XML AS XML)
+--     FROM OPENROWSET (BULK 'C:\Users\mkara\PycharmProjects\carDealer\employees.xml' , SINGLE_BLOB) AS T(MY_XML)) AS T(MY_XML)
+--     CROSS APPLY MY_XML.nodes('dataset/record') AS MY_XML (record);
+
+-- SELECT * FROM employees3;

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Posts</h1>
+    {% for post in list[0] %}
+        {% set liked_names = [] %}
+        {% for author in list[1] %}
+            {% if post.id in author.likes %}
+                {{ liked_names.append(author.name) }}
+            {% endif %}
+        {% endfor %}
+        <article>
+            {% for author in list[1] %}
+                {% if post.author == author.id %}
+                    <h1 id="p{{ post.id }}">{{ author.name }}#{{ post.id }} <a href="#p{{ post.id }}">¶</a></h1>
+                {% endif %}
+            {% endfor %}
+            <p>{{ post.content }}</p>
+{#            {% for author in list[1] %}#}
+{#                {% if post.id in author.likes %}#}
+{#                    <p>Liked by {{ author.name }}</p>#}
+{#                {% endif %}#}
+            {% if liked_names|length > 1 %}
+                <p> Liked by {{ liked_names[:-1]|join(", ") }} and {{ liked_names[-1] }}</p>
+            {% elif liked_names|length == 1 %}
+                <p> Liked by {{ liked_names|join }}</p>
+            {% endif %}
+{#            {% endfor %}#}
+        </article>
+    {% endfor %}
+{% endblock content %}

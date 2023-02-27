@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+    <table class="table table-dark table-striped-columns">
+      <tr>
+        <th>#</th>
+        <th>Product</th>
+        <th>Price</th>
+      </tr>
+    {% for product in products %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ product[0] }}</td>
+        <td>{{ product[1]|round(2, 'common') }} ¥</td>
+      </tr>
+    {% endfor %}
+    </table>
+{% endblock content %}

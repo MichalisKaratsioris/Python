@@ -1,0 +1,17 @@
+body {
+  background-color: hsl(213, 100%, 75%);
+  color: hsl(222, 53%, 19%);
+}
+
+a {
+  color: hsl(0, 0%, 17%);
+  opacity: .75;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 3px;
+}
+
+a:hover {
+  opacity: 1;
+  background-color: hsl(0, 0%, 80%);
+}
